@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!-- 配置User对象创建:默认使用无参构造方法 -->
     <bean id="my_user" class="icu.lking.spring5.User"></bean>
@@ -24,4 +25,7 @@
         <constructor-arg index="0" value="小白和小黑"></constructor-arg>
         <constructor-arg index="1" value="Jason"></constructor-arg>
     </bean>
+
+    <!-- 方式三：使用p命名空间注入属性  注意 : 仅简化set方式注入 -->
+    <bean id="order_di_p_label" class="icu.lking.spring5.Order" p:orderNumber="123456" p:createUserName="Jason"></bean>
 </beans>

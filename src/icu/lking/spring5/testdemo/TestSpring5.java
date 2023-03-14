@@ -1,6 +1,7 @@
 package icu.lking.spring5.testdemo;
 
 import icu.lking.spring5.Book;
+import icu.lking.spring5.Order;
 import icu.lking.spring5.User;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
@@ -108,5 +109,17 @@ public class TestSpring5 {
         // 输出显示
         System.out.println(bookDiConstructorName);
         System.out.println(bookDiConstructorIndex);
+    }
+    /**
+     * test DI by set method and p xml namespace
+     */
+    @Test
+    public void testOrderDIBySettingMethodAndPXmlNameSpace(){
+        // 获取容器对象
+        ApplicationContext context = new ClassPathXmlApplicationContext("bean1.xml");
+        // 获取bean
+        Order orderDiPLabel = context.getBean("order_di_p_label", Order.class);
+        // 输出
+        System.out.println(orderDiPLabel);
     }
 }
