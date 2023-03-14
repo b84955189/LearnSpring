@@ -2,6 +2,7 @@ package icu.lking.spring5.testdemo;
 
 import icu.lking.spring5.User;
 import org.junit.Test;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -19,9 +20,22 @@ public class TestSpring5 {
      */
     @Test
     public void testUserBeanAdd(){
-        // 1. 加载spring配置文件（xml文件）:默认src下相对路径
+        /**
+         * IOC的思想就是基于IOC容器完成，IOC的底层就是对象工厂。
+         * **Spring提供了两个IOC容器实现的方式（两个接口）。**
+         * - **BeanFactory**：IOC容器的基本实现，一般是Spring内部使用，不建议开发人员使用。
+         * 	- ==在加载配置文件时不会创建容器中的对象，只有获取时才创建==。
+         * - **ApplicationContext**：BeanFactory的子接口，提供更多更强大的功能。一般由开发人员使用。
+         * 	- ==在加载配置文件时会同时创建容器中的对象==。
+         *
+         * *注：推荐使用`ApplicationContext`接口，因为项目使用中，一般把耗时的操作放在项目启动时。*
+         */
+        // IOC容器接口：父接口 BeanFactory（spring内部使用） & 子接口 ApplicationContext（推荐）
+        // 1. 加载spring配置文件（xml文件）:默认src下相对路径 ：加载配置文件的同时创建所有容器内对象
         ApplicationContext context = new ClassPathXmlApplicationContext("bean1.xml");
-        //如果不在src文件夹(即classpath)下可以采用
+        // 加载配置文件的同时不创建容器内对象，只有获取的时候创建
+        BeanFactory beanFactory = new ClassPathXmlApplicationContext("bean1.xml");
+        //如果不在src文件夹(即classpath)下可以采用，绝对路径
         //ApplicationContext context = new FileSystemXmlApplicationContext("");
 
 
