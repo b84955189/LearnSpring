@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <!-- 配置User对象创建 -->
+    <!-- 配置User对象创建:默认使用无参构造方法 -->
     <bean id="my_user" class="icu.lking.spring5.User"></bean>
+
+    <!-- 方式一：使用set方法完成依赖注入 -->
+    <!-- 配置Book对象创建信息：默认使用无参构造方法 -->
+    <bean id="book_di_property" class="icu.lking.spring5.Book">
+        <property name="bookName" value="小红与小牛的故事"></property>
+        <property name="author" value="Jason"></property>
+    </bean>
+
+    <!-- 方式二：使用构造方法方法完成依赖注入 -->
+    <!-- 配置Book对象创建信息：这里使用有参构造方法 -->
+    <bean id="book_di_constructor_name" class="icu.lking.spring5.Book">
+        <!-- 使用name方式 -->
+        <constructor-arg name="author" value="Jason"></constructor-arg>
+        <constructor-arg name="bookName" value="放牛娃的夏天"></constructor-arg>
+    </bean>
+    <bean id="book_di_constructor_index" class="icu.lking.spring5.Book">
+        <!-- 使用Index方式 -->
+        <constructor-arg index="0" value="小白和小黑"></constructor-arg>
+        <constructor-arg index="1" value="Jason"></constructor-arg>
+    </bean>
+
+    <!-- 方式三：使用p命名空间注入属性  注意 : 仅简化set方式注入 -->
+    <bean id="order_di_p_label" class="icu.lking.spring5.Order" p:orderNumber="123456" p:createUserName="Jason"></bean>
 </beans>
