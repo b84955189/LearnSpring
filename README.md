@@ -9,6 +9,7 @@
 - 2023.3.14
   - IOC底层原理
   - IOC容器-Bean管理XML方式（创建对象和set注入属性）
+  - IOC容器-Bean管理XML方式（有参构造注入属性）
 
 
 >  Contact Me:www.lking.icu

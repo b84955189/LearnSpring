@@ -95,4 +95,18 @@ public class TestSpring5 {
         System.out.println(bookDiProperty);
 
     }
+    /**
+     * test DI by constructor method
+     */
+    @Test
+    public void testBookDIByConstructorMethod(){
+        // 根据配置文件获取容器对象
+        ApplicationContext context = new ClassPathXmlApplicationContext("bean1.xml");
+        // 获取对象
+        Book bookDiConstructorName = context.getBean("book_di_constructor_name", Book.class);
+        Book bookDiConstructorIndex = context.getBean("book_di_constructor_index", Book.class);
+        // 输出显示
+        System.out.println(bookDiConstructorName);
+        System.out.println(bookDiConstructorIndex);
+    }
 }
