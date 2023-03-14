@@ -6,6 +6,9 @@
   - Spring5 框架概述
 - 2023.3.13
   - 入门案例
+- 2023.3.14
+  - IOC底层原理
+  - IOC容器-Bean管理XML方式（创建对象和set注入属性）
 
 
 >  Contact Me:www.lking.icu

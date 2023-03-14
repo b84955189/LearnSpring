@@ -2,6 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <!-- 配置User对象创建 -->
+    <!-- 配置User对象创建:默认使用无参构造方法 -->
     <bean id="my_user" class="icu.lking.spring5.User"></bean>
+
+    <!-- 配置Book对象创建信息：默认使用无参构造方法 -->
+    <bean id="book_di_property" class="icu.lking.spring5.Book">
+        <!-- 方式一：使用set方法完成依赖注入 -->
+        <property name="bookName" value="小红与小牛的故事"></property>
+        <property name="author" value="Jason"></property>
+    </bean>
 </beans>

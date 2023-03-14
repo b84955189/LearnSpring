@@ -1,5 +1,6 @@
 package icu.lking.spring5.testdemo;
 
+import icu.lking.spring5.Book;
 import icu.lking.spring5.User;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
@@ -79,6 +80,19 @@ public class TestSpring5 {
         // 调用无参方法
         method.invoke(aObject);
 
+
+    }
+    /**
+     * test DI by setting method
+     */
+    @Test
+    public void testBookDIBySettingMethod(){
+        //  根据加载和解析的Spring XML配置文件, 创建IOC容器对象 : ApplicationContext 加载配置后创建容器内全部对象
+        ApplicationContext context = new ClassPathXmlApplicationContext("bean1.xml");
+        // 获取bean
+        Book bookDiProperty = context.getBean("book_di_property", Book.class);
+        // 输出
+        System.out.println(bookDiProperty);
 
     }
 }
